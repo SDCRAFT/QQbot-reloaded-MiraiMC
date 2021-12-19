@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example.demo</groupId>
-    <artifactId>MiraiMCPlugin</artifactId>
+    <groupId>me.heartalborada.QQBot</groupId>
+    <artifactId>QQ2MC</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -15,16 +15,19 @@
     </properties>
 
     <build>
-        <finalName>${project.artifactId}</finalName>
+        <finalName>${project.artifactId}-${project.version}</finalName>
     </build>
 
     <repositories>
+        <repository>
+            <id>maven-repo</id>
+            <url>https://repo1.maven.org/maven2</url>
+        </repository>
         <!-- This adds the Spigot Maven repository to the build -->
         <repository>
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
-
     </repositories>
 
     <dependencies>
@@ -36,12 +39,21 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.70</version>
+        </dependency>
+        <dependency>
             <groupId>io.github.dreamvoid</groupId>
-            <artifactId>MiraiMC-Integration</artifactId>
-            <!--请确保版本为Github上的最新版本-->
+            <artifactId>MiraiMC-Bukkit</artifactId>
             <version>1.5.2</version>
-            <scope>provided</scope>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/MiraiMC-Bukkit.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.6</version>
         </dependency>
     </dependencies>
-
 </project>

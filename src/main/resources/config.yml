@@ -1,0 +1,33 @@
+bot:
+  account:
+  enable-group:
+    -
+commands:
+  online: ".online"
+  latest-minecraft-version: ".LMRV"
+  online-player-skin: ".skin "
+  help: ".help"
+settings:
+  is-only-response-player-numbers: false
+messages:
+  server:
+    #%p%:player name %m%:message
+    join: "[Server] %p% join the game"
+    quit: "[Server] %p% quit the game"
+    chat: "[Chat] %p%:%m%"
+  # %gn%:groupName %gi%:groupID %sn%:senderName %si%:senderID %m%:message
+  QQMessageToServer: "[group:%gn%][sender:%sn%][message:%m%]"
+  online:
+    no-player: "No one player"
+    only-response-player-number: "Online player numbers: %n%"
+    response-player-name: "Online players: %p%"
+  latest-minecraft-version: "[The Latest Release Version] Version:%ver%,type:%type%,release time:%rt%"
+  skin:
+    is-message-spilt-response: false
+    format: "[Skin] Player Name:%pn%,skin:%sk%,history name:%hn%"
+    error: "error"
+    history-name-format: "Player name:%n%,usage Time:%t%\n"
+    skin-response-format: "skin type:%st%\nskin url:%s%\ncape url:%cp%"
+  # %oc%: online command %lrmc%: latest minecraft version command
+  # %sc%: skin command %hc%: help command
+  help: "[Help] %oc%:get server online player\n%lrmc%:get minecraft latest version\n%sc%:get online player skin and cape\n%hc%:get commands help"
