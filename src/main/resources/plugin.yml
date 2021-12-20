@@ -2,5 +2,6 @@ name: QQbot
 main: me.heartalborada.QQbot.Main
 version: 1.0
 author: heartalborada
+webside: https://github.com/heartalborada-del/QQbot-reloaded-MiraiMC
 depend:
   - MiraiMC

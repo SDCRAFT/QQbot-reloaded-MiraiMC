@@ -16,16 +16,16 @@ public class Main extends JavaPlugin {
 
     @Override // load plugin
     public void onLoad() {
-
+        if (!MiraiBot.getBot(EnableBotAccount).isOnline()) {
+            logger.warning(plugin_name + "The bot account is offline,please check it.");
+            this.getServer().getPluginManager().disablePlugin(this);
+        }
     }
 
     @Override // enable plugin
     public void onEnable() {
         new yaml(this).loadConfig();
-        if (!MiraiBot.getBot(EnableBotAccount).isOnline()) {
-            logger.warning(plugin_name + "The bot account is offline,please check it.");
-            this.getServer().getPluginManager().disablePlugin(this);
-        }
+
         logger.info(plugin_name + "Register Bukkit Events");
         this.getServer().getPluginManager().registerEvents(new Bukkit_Event(), this);
         logger.info(plugin_name + "Register Tencent QQ Events");

@@ -14,8 +14,7 @@ import java.util.Objects;
 import static me.heartalborada.QQbot.Main.plugin_name;
 
 import static me.heartalborada.QQbot.Config.*;
-import static me.heartalborada.QQbot.Utils.Player.GetPlayerTextures;
-import static me.heartalborada.QQbot.Utils.Player.GetPlayerUsedName;
+import static me.heartalborada.QQbot.Utils.Player.*;
 import static me.heartalborada.QQbot.Utils.Version.GET_new_version;
 import static org.bukkit.Bukkit.*;
 
@@ -41,7 +40,7 @@ public class TencentQQ_Event implements Listener {
             if (g.getMessage().equals(onlineCommand)) {
                 //Only result online player numbers
                 if (isOnlyResponsePlayerNumber) {
-                    group.sendMessage(playerNumbersMessage + Bukkit.getOnlinePlayers().toArray(new Player[0]).length);
+                    group.sendMessage(playerNumbersMessage.replaceAll("%n%", String.valueOf(Bukkit.getOnlinePlayers().size())));
                 }
                 //result online player names
                 else {
@@ -63,11 +62,14 @@ public class TencentQQ_Event implements Listener {
                 }
             } else if (g.getMessage().equals(getLRMCommand)) {
                 String[] result = GET_new_version();
-                String msg = LRMFormat.replace("%ver%", result[0]).replace("%type%", result[1]).replace("%rt%", result[2]);
+                String msg = LRMFormat
+                        .replace("%ver%", result[0])
+                        .replace("%type%", result[1])
+                        .replace("%rt%", result[2]);
                 group.sendMessage(msg);
             } else if (Objects.equals(StringUtils.substring(g.getMessage(), 0, getSkinCommand.length()), getSkinCommand)) {
                 String id = g.getMessage().substring(getSkinCommand.length());
-                String uuid = me.heartalborada.QQbot.Utils.Player.GetPlayerUUID(id);
+                String uuid = GetPlayerUUID(id);
                 if (uuid.equals("Error")) {
                     group.sendMessage(skinOnError);
                 } else {

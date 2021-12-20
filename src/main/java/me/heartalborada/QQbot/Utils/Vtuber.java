@@ -49,7 +49,7 @@ public class Vtuber {
                     e.printStackTrace();
                 }
             }
-            String VideoTags = new Internet.Url().doGet("https://api.bilibili.com/x/tag/archive/tags?" + GetAidOrBid(tmp)).toLowerCase();
+            String VideoTags = new Internet().doGet("https://api.bilibili.com/x/tag/archive/tags?" + GetAidOrBid(tmp)).toLowerCase();
             String[] PassTags = {"vtb", "vup", "vtuber", "虚拟偶像", "虚拟主播", "虚拟UP主"};
             for (int i = 0; i < PassTags.length; i++) {
                 if (VideoTags.contains(PassTags[i])) {

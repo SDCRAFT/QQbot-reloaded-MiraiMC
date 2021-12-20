@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.heartalborada.QQBot</groupId>
-    <artifactId>QQ2MC</artifactId>
+    <artifactId>QQBot</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
