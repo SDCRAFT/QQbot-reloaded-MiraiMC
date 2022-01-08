@@ -23,6 +23,7 @@ messages:
     response-player-name: "Online players: %p%"
   latest-minecraft-version: "[The Latest Release Version] Version:%ver%,type:%type%,release time:%rt%"
   skin:
+    querying: Querying...
     is-message-spilt-response: false
     format: "[Skin] Player Name: %pn%\nskin: %sk%\nhistory name: %hn%"
     error: "error"
