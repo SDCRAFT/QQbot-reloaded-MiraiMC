@@ -21,7 +21,7 @@ public class Player {
     public static String GetPlayerTextures(String Player_UUID){
         JSONObject json = JSONObject.parseObject(GetPlayerTexturesJson(Player_UUID)).getJSONObject("textures");
         String skinUrl= json.getJSONObject("SKIN").getString("url");
-        String skinType=json.getJSONObject("SKIN").getJSONObject("metadata").getString("model");
+        String skinType=json.getJSONObject("SKIN").containsKey("metadata") ? json.getJSONObject("SKIN").getJSONObject("metadata").getString("model") : "classic";
         String capeUrl="None";
         if(json.containsKey("CAPE")){
             capeUrl=json.getJSONObject("CAPE").getString("url");
@@ -32,7 +32,6 @@ public class Player {
         Internet.Url http = new Internet.Url();
         String data= "{\"names\":"+http.doGet("https://api.mojang.com/user/profiles/"+Player_UUID+"/names")+"}";
         Object[] arr= JSONObject.parseObject(data).getJSONArray("names").toArray();
-        System.out.println(data);
         StringBuilder allOfUsedName = new StringBuilder();
         for(int i=arr.length-1;i>=0;i--){
             if(!JSONObject.parseObject(String.valueOf(arr[i])).containsKey("changedToAt")&&arr.length==1){
@@ -65,7 +64,7 @@ public class Player {
                             .replace("%t%",buildUsageName(JSONObject.parseObject(String.valueOf(arr[i])).getLong("changedToAt"),JSONObject.parseObject(String.valueOf(arr[i+1])).getLong("changedToAt")))
             );
         }
-        return allOfUsedName != null ? allOfUsedName.toString() : "None";
+        return allOfUsedName.toString();
     }
 
     private static String buildUsageName(long ct1,long ct2){

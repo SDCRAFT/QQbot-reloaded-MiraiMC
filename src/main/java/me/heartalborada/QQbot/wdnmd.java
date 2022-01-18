@@ -6,7 +6,7 @@ import static me.heartalborada.QQbot.Utils.Player.*;
 
 public class wdnmd {
     public static void main(String[] arg) {
-        System.out.println(GetPlayerUsedName(GetPlayerUUID("heartalborada")));
-        System.out.println(GetPlayerUsedName(GetPlayerUUID("Botchaos_64bit")));
+        System.out.println(GetPlayerTextures(GetPlayerUUID("heartalborada")));
+        System.out.println(GetPlayerTextures(GetPlayerUUID("Botchaos_64bit")));
     }
 }

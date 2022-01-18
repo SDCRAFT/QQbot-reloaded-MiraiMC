@@ -26,8 +26,8 @@ public class Config {
     //skin
     public static String skinFormat; //Example [Skin] Player Name:%pn%,skin:%sk%,history name:%hn%
     public static String skinOnError;
-    public static String historyNameFormat="Player name:%n%,usage Time:%t%\n"; //Example Player name:%n%,usage Time:%t%
-    public static String skinResponseFormat;  //Example skin type:%st%\nskin url:%s%\ncape url:%cp%
+    public static String historyNameFormat; //Example Player name:%n%,usage Time:%t%
+    public static String skinResponseFormat="skin type:%st%\nskin url:%s%\ncape url:%cp%";  //Example skin type:%st%\nskin url:%s%\ncape url:%cp%
     //Enable Account&Group
     public static Long EnableBotAccount;
     public static Long[] EnableGroup;

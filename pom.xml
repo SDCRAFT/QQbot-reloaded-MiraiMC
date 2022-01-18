@@ -28,6 +28,11 @@
             <id>spigot-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+        <!--bungeeCord-->
+        <repository>
+            <id>bungeecord-repo</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -35,14 +40,29 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.5-R0.1-SNAPSHOT</version>
+            <version>1.17.1-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--bungeeCord support-->
+        <dependency>
+            <groupId>net.md-5</groupId>
+            <artifactId>bungeecord-api</artifactId>
+            <version>1.16-R0.4</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
+            <groupId>net.md-5</groupId>
+            <artifactId>bungeecord-chat</artifactId>
+            <version>1.16-R0.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--json support-->
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.70</version>
+            <version>1.2.79</version>
         </dependency>
+        <!--bot support-->
         <dependency>
             <groupId>io.github.dreamvoid</groupId>
             <artifactId>MiraiMC-Bukkit</artifactId>
@@ -51,9 +71,11 @@
             <systemPath>${project.basedir}/lib/MiraiMC-Bukkit.jar</systemPath>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.6</version>
+            <groupId>io.github.dreamvoid</groupId>
+            <artifactId>MiraiMC-Bungee</artifactId>
+            <version>1.5.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/MiraiMC-Bungee.jar</systemPath>
         </dependency>
     </dependencies>
 </project>

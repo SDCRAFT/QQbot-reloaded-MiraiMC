@@ -1,14 +1,12 @@
-package me.heartalborada.QQbot.Utils;
+package me.heartalborada.QQbot.bukkit;
 
-import me.heartalborada.QQbot.Main;
+import me.heartalborada.QQbot.bukkitMain;
 
 import static me.heartalborada.QQbot.Config.*;
 public class yaml {
-    private final Main plugin;
-    private static yaml instance;
+    private final bukkitMain plugin;
      
-    public yaml(Main plugin){
-        instance = this;
+    public yaml(bukkitMain plugin){
         this.plugin =plugin;
         PluginDir=plugin.getDataFolder();
     }

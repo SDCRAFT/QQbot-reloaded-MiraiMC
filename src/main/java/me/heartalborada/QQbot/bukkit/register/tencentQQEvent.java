@@ -1,4 +1,4 @@
-package me.heartalborada.QQbot.Register;
+package me.heartalborada.QQbot.bukkit.register;
 
 import me.dreamvoid.miraimc.api.MiraiBot;
 import me.dreamvoid.miraimc.api.bot.MiraiGroup;
@@ -17,8 +17,8 @@ import static me.heartalborada.QQbot.Utils.Player.GetPlayerUsedName;
 import static me.heartalborada.QQbot.Utils.Version.GET_new_version;
 import static org.bukkit.Bukkit.*;
 
-public class TencentQQ_Event implements Listener {
-    public TencentQQ_Event() {
+public class tencentQQEvent implements Listener {
+    public tencentQQEvent() {
         getLogger().info("Tencent QQ events are listening now");
     }
 

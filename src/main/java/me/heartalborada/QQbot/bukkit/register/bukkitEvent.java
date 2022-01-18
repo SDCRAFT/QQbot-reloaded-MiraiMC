@@ -1,4 +1,4 @@
-package me.heartalborada.QQbot.Register;
+package me.heartalborada.QQbot.bukkit.register;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,8 +11,8 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import static me.heartalborada.QQbot.Config.*;
 import static org.bukkit.Bukkit.getLogger;
 
-public class Bukkit_Event implements Listener {
-    public Bukkit_Event() {
+public class bukkitEvent implements Listener, net.md_5.bungee.api.plugin.Listener {
+    public bukkitEvent() {
         getLogger().info("Bukkit events are listening now");
     }
 

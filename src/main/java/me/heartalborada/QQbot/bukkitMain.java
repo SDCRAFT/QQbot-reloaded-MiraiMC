@@ -1,16 +1,16 @@
 package me.heartalborada.QQbot;
 
 import me.dreamvoid.miraimc.api.MiraiBot;
-import me.heartalborada.QQbot.Register.Bukkit_Event;
-import me.heartalborada.QQbot.Register.TencentQQ_Event;
+import me.heartalborada.QQbot.bukkit.register.bukkitEvent;
+import me.heartalborada.QQbot.bukkit.register.tencentQQEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import me.heartalborada.QQbot.Utils.yaml;
+import me.heartalborada.QQbot.bukkit.yaml;
 
 import java.util.logging.Logger;
 
 import static me.heartalborada.QQbot.Config.EnableBotAccount;
 
-public class Main extends JavaPlugin {
+public class bukkitMain extends JavaPlugin {
     public Logger logger = this.getLogger();
 
     @Override // load plugin
@@ -28,9 +28,9 @@ public class Main extends JavaPlugin {
     @Override // enable plugin
     public void onEnable() {
         logger.info("Register Bukkit Events");
-        this.getServer().getPluginManager().registerEvents(new Bukkit_Event(), this);
+        this.getServer().getPluginManager().registerEvents(new bukkitEvent(), this);
         logger.info("Register Tencent QQ Events");
-        this.getServer().getPluginManager().registerEvents(new TencentQQ_Event(), this);
+        this.getServer().getPluginManager().registerEvents(new tencentQQEvent(), this);
     }
 
     @Override // disable plugin
