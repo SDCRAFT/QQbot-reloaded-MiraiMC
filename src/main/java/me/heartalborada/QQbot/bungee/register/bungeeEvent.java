@@ -29,7 +29,7 @@ public class bungeeEvent implements Listener {
         }
     }
 
-    /*@EventHandler
+    /* @EventHandler
     public void onPlayerChat(ChatEvent c) {
         for (long group : EnableGroup) {
             MiraiBot.getBot(EnableBotAccount).getGroup(group).sendMessage(onChatMessage.replaceAll("%p%",c.getReceiver()..getDisplayName()).replaceAll("%m%",c.getMessage()));

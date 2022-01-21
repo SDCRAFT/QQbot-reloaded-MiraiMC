@@ -5,10 +5,12 @@ import me.heartalborada.QQbot.bukkit.register.bukkitEvent;
 import me.heartalborada.QQbot.bukkit.register.tencentQQEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import me.heartalborada.QQbot.bukkit.yaml;
+import me.heartalborada.QQbot.bukkit.pluginChannel;
 
 import java.util.logging.Logger;
 
 import static me.heartalborada.QQbot.Config.EnableBotAccount;
+import static me.heartalborada.QQbot.Config.bungeeCord_support;
 
 public class bukkitMain extends JavaPlugin {
     public Logger logger = this.getLogger();
@@ -16,12 +18,17 @@ public class bukkitMain extends JavaPlugin {
     @Override // load plugin
     public void onLoad() {
         new yaml(this).loadConfig();
-        if(EnableBotAccount==null){
-            this.getServer().getPluginManager().disablePlugin(this);
-        }
-        if (!(MiraiBot.getBot(EnableBotAccount).isOnline()||MiraiBot.getBot(EnableBotAccount).isExist())) {
-            logger.warning("The bot account is offline or doesn't exist,please check it.");
-            this.getServer().getPluginManager().disablePlugin(this);
+        if(!bungeeCord_support) {
+            if (EnableBotAccount == null) {
+                this.getServer().getPluginManager().disablePlugin(this);
+            }
+            if (!(MiraiBot.getBot(EnableBotAccount).isOnline() || MiraiBot.getBot(EnableBotAccount).isExist())) {
+                logger.warning("The bot account is offline or doesn't exist,please check it.");
+                this.getServer().getPluginManager().disablePlugin(this);
+            }
+        } else {
+            this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+            this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord",new pluginChannel());
         }
     }
 
@@ -29,8 +36,10 @@ public class bukkitMain extends JavaPlugin {
     public void onEnable() {
         logger.info("Register Bukkit Events");
         this.getServer().getPluginManager().registerEvents(new bukkitEvent(), this);
-        logger.info("Register Tencent QQ Events");
-        this.getServer().getPluginManager().registerEvents(new tencentQQEvent(), this);
+        if(!bungeeCord_support) {
+            logger.info("Register Tencent QQ Events");
+            this.getServer().getPluginManager().registerEvents(new tencentQQEvent(), this);
+        }
     }
 
     @Override // disable plugin

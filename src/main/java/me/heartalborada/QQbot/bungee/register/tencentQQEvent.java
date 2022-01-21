@@ -1,10 +1,17 @@
 package me.heartalborada.QQbot.bungee.register;
 
+import com.google.common.collect.Iterables;
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 import me.dreamvoid.miraimc.api.MiraiBot;
 import me.dreamvoid.miraimc.api.bot.MiraiGroup;
 import me.dreamvoid.miraimc.bungee.event.MiraiGroupMessageEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Listener;
+import net.md_5.bungee.event.EventHandler;
 import org.apache.commons.lang.StringUtils;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 
 
 import java.util.Objects;
@@ -40,15 +47,10 @@ public class tencentQQEvent implements Listener {
                 //result online player names
                 else {
                     StringBuilder msg = new StringBuilder();
-                    Player[] players = getOnlinePlayers().toArray(new Player[0]);
-                    for (int i = 0; i < players.length; i++) {
-                        System.out.println(players[i].getDisplayName());
-                        if (i == players.length - 1) {
-                            msg.append(players[i].getDisplayName());
-                            break;
-                        }
-                        msg.append(players[i].getDisplayName()).append(",");
-                    }
+                    ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                    out.writeUTF("PlayerCount");
+                    out.writeUTF("ALL");
+
                     if (msg.length()!=0) {
                         group.sendMessage(playerNameMessage.replace("%p%",msg));
                     } else {
@@ -79,12 +81,17 @@ public class tencentQQEvent implements Listener {
                         .replaceAll("%sc%",getSkinCommand)
                         .replaceAll("%hc%",helpCommand));
             } else {
-                Bukkit.broadcastMessage(QQMessageFormat
-                        .replaceAll("%gn%",g.getGroupName())
-                        .replaceAll("%gi%", String.valueOf(g.getGroupID()))
-                        .replaceAll("%si%",String.valueOf(g.getSenderID()))
-                        .replaceAll("%sn%",g.getSenderNameCard())
-                        .replaceAll("%m%",g.getMessage()));
+                TextComponent message=new TextComponent(QQMessageFormat
+                                                            .replaceAll("%gn%",g.getGroupName())
+                                                            .replaceAll("%gi%", String.valueOf(g.getGroupID()))
+                                                            .replaceAll("%si%",String.valueOf(g.getSenderID()))
+                                                            .replaceAll("%sn%",g.getSenderNameCard())
+                                                            .replaceAll("%m%",g.getMessage()));
+                ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                out.writeUTF("QQbot");
+                out.writeUTF("Argument");
+                Player player = Iterables.getFirst(Bukkit.getOnlinePlayers(), null);
+                player.sendPluginMessage(this,"BungeeCord", out.toByteArray());
             }
         }
     }

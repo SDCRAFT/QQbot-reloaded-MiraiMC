@@ -13,6 +13,7 @@ public class yaml {
 
     public void loadConfig(){
         this.plugin.saveDefaultConfig();
+        bungeecord=this.plugin.getConfig().getBoolean("bunggcord-support");
         EnableBotAccount=this.plugin.getConfig().getLong("bot.account",0);
         EnableGroup = this.plugin.getConfig().getLongList("bot.enable-group").toArray(new Long[0]);
         onlineCommand=this.plugin.getConfig().getString("commands.online",".online");

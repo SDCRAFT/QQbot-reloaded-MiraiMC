@@ -1,3 +1,6 @@
+bungeecord:
+  enable-support: false
+  prefix: "[Server1]"
 bot:
   account:
   enable-group:

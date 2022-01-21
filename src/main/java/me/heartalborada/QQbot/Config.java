@@ -40,4 +40,7 @@ public class Config {
     public static String onJoinMessage;
     public static String onQuitMessage;
     public static String onChatMessage;
+    //bungeecord
+    public static boolean bungeeCord_support;
+    public static String bungeeCord_prefix;
 }
